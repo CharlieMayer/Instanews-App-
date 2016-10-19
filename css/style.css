@@ -66,3 +66,7 @@ footer{
 @media (min-width: 1000px) {
     /* For desktop*/
   
+header{
+  display: inline-flex;
+  align-items: center;
+}
