@@ -42,8 +42,8 @@ $(document).ready(function() {
               }
             }
           }
-
-
+       /**hide blank article  **/
+          $("article").eq(0).hide();
     }).fail(function(err) {
       throw err;
     });
