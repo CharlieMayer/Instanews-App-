@@ -5,8 +5,11 @@ $(document).ready(function() {
     var multimedia= result.results[0].multimedia[4].url;
     var snippet=result.results[0].abstract;
 }
-/** select section **/
+/** select  **/
   $('select').on( "change", function() {
+    $('header').animate({"width":"auto"});
+
+
     var value= $('select option:selected').val();
     var url = "https://api.nytimes.com/svc/topstories/v2/" + value +  '.json';
     url += '?' + $.param({
