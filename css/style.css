@@ -52,3 +52,17 @@ article{
 footer{
   color: #c2c2c2
 }
+/***************************
+  ****************************
+  These are the tablet settings
+  ****************************
+  ***************************/
+
+@media (min-width: 600px) {
+    /* For tablet */
+
+
+
+@media (min-width: 1000px) {
+    /* For desktop*/
+  
