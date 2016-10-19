@@ -24,7 +24,7 @@ $(document).ready(function() {
         create(result);
         var articles= result.results;
         for (var i=0; i < articles.length; i++) {
-          if (articles.length < 13) {
+
             if(result.results[i].multimedia.length>0) {
                 var clone=$('article').eq(0).clone();
                 var web_url=result.results[i].url;
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 $('.article').show();
 
               }
-            }
+
           }
        /**hide blank article  **/
           $("article").eq(0).hide();
