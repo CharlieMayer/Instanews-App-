@@ -34,22 +34,44 @@ $(document).ready(function(){
         $(".logo").animate({"width":"130px"}, 400);
         $("img").animate({"margin":"0 3em"}, 400);
 
-        // AJAX CALL TO GET THE ARTICLES
-        var name = $('select option:selected').val();
-        console.log(name);
-        var url = "https://api.nytimes.com/svc/topstories/v2/" + name+".json";
-        url += '?' + $.param({
-          'api-key': "2824c92828de454daccd0f86c22fb3e4"
-        });
-        $.ajax({
-          url: url,
-          method: 'GET',
-        }).done(function(result) {
-            $(".loader").show();
-          console.log(result);
-            buildArticle(result);
-        }).fail(function(err) {
-          throw err;
-        });
-    })
+    var value= $('select option:selected').val();
+    var url = "https://api.nytimes.com/svc/topstories/v2/" + value +  '.json';
+    url += '?' + $.param({
+      'api-key': "2824c92828de454daccd0f86c22fb3e4"
+  });
+
+ /** get articles from NY Times API**/
+    $.ajax({
+      url: url,
+      method: 'GET',
+    }).done(function(result) {
+        create(result);
+        var articles= result.results;
+        for (var i=0; i < articles.length; i++) {
+          if (articles.length < 13) {
+            if(result.results[i].multimedia.length>0) {
+                var clone=$('article').eq(0).clone();
+                var web_url=result.results[i].url;
+                var multimedia=  result.results[i].multimedia[4].url;
+                var snippet=result.results[i].abstract;
+            /**using clone to duplicate elements  **/
+                $(clone).css("background-image", "url("+ multimedia +")");
+                $(clone).children('.blurb').html(snippet);
+                $(clone).children('.url').attr("href", web_url);
+
+            /**appending to  div with results class**/
+                $('.results').append(clone);
+                $('.article').show();
+
+              }
+            }
+          }
+       /**hide blank article  **/
+          $("article").eq(0).hide();
+    }).fail(function(err) {
+      throw err;
+    });
+
+
+  })
 })

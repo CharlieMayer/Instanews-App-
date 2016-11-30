@@ -52,8 +52,6 @@ article{
 footer{
   color: #c2c2c2
 }
-
-
 /***************************
   ****************************
   These are the tablet settings
@@ -68,3 +66,7 @@ footer{
 @media (min-width: 1000px) {
     /* For desktop*/
   
+header{
+  display: inline-flex;
+  align-items: center;
+}
